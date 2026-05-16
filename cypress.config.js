@@ -10,7 +10,6 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild")
 
 async function setupNodeEvents(on, config) {
-
   await addCucumberPreprocessorPlugin(on, config)
 
   on(
@@ -25,11 +24,10 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/features/*.feature",
-
-    stepDefinitions:
-      "cypress/e2e/features/step_definitions/*.js",
-
+    specPattern: [
+      "cypress/e2e/**/*.cy.js",
+      "cypress/e2e/features/*.feature"
+    ],
     setupNodeEvents,
   },
 })
